@@ -9,18 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var User_1 = require('./User');
+var user_service_1 = require('./user.service');
 var LoginComponent = (function () {
-    function LoginComponent() {
+    function LoginComponent(userService) {
+        this.userService = userService;
+        this.model = new User_1.User(null, null, null, null, null);
+        this.submitted = false;
+        this.mode = 'Observable';
     }
-    LoginComponent.prototype.ngOnInit = function () { this.getEvent(); };
-    LoginComponent.prototype.getEvent = function () {
-        console.log('test');
+    LoginComponent.prototype.onSubmit = function () {
+        this.submitted = true;
+        console.log(this.model);
+    };
+    LoginComponent.prototype.login = function () {
+        var _this = this;
+        console.log(this.model);
+        if (!this.model.email && !this.model.password) {
+            return;
+        }
+        this.userService.login(this.model.email, btoa(this.model.password))
+            .subscribe(function (data) { return _this.user.push(data); }, function (error) { return _this.errorMessage = 'error'; });
     };
     LoginComponent = __decorate([
         core_1.Component({
-            templateUrl: '../views/users/login.html'
+            selector: 'LoginForm',
+            templateUrl: '../views/users/login.html',
+            providers: [user_service_1.UserService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [user_service_1.UserService])
     ], LoginComponent);
     return LoginComponent;
 }());

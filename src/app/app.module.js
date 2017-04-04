@@ -12,14 +12,17 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
+var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var login_component_1 = require("./users/login.component");
+var inscription_component_1 = require("./users/inscription.component");
 var index_component_1 = require("./index.component");
 var pageNotFound_component_1 = require("./pageNotFound.component");
 var appRoutes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'index', component: index_component_1.IndexComponent },
     { path: '', redirectTo: '/index', pathMatch: 'full' },
+    { path: 'inscription', component: inscription_component_1.InscriptionComponent },
     { path: '**', component: pageNotFound_component_1.PageNotFoundComponent }
 ];
 var AppModule = (function () {
@@ -30,9 +33,11 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                router_1.RouterModule.forRoot(appRoutes)
+                router_1.RouterModule.forRoot(appRoutes),
+                http_1.HttpModule,
+                http_1.JsonpModule
             ],
-            declarations: [app_component_1.AppComponent, login_component_1.LoginComponent, index_component_1.IndexComponent, pageNotFound_component_1.PageNotFoundComponent],
+            declarations: [app_component_1.AppComponent, login_component_1.LoginComponent, index_component_1.IndexComponent, pageNotFound_component_1.PageNotFoundComponent, inscription_component_1.InscriptionComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -9,17 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var User_1 = require('./User');
+var InscriptionComponent = (function () {
+    function InscriptionComponent() {
+        this.model = new User_1.User(null, null, null, null, null);
+        this.submitted = false;
     }
-    AppComponent = __decorate([
+    InscriptionComponent.prototype.onSubmit = function () {
+        this.submitted = true;
+        console.log(this.model);
+    };
+    InscriptionComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <ul class=\"menu\">\n        <li><a href=\"\">\u00E0 propos</a></li>\n        <li><a href=\"\">contact</a></li>\n        <li><a routerLink=\"/login\" routerLinkActive=\"active\">Connexion</a></li>\n        <li><a routerLink=\"/inscription\" routerLinkActive=\"active\">Inscription</a></li>\n        <li><a routerLink=\"/index\" routerLinkActive=\"active\">Accueil</a></li>\t\t\t\n\t</ul>\n\t<router-outlet></router-outlet>\n"
+            templateUrl: '../views/users/inscription.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], InscriptionComponent);
+    return InscriptionComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.InscriptionComponent = InscriptionComponent;
+//# sourceMappingURL=inscription.component.js.map

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
         <li><a href="">à propos</a></li>
         <li><a href="">contact</a></li>
         <li><a routerLink="/login" routerLinkActive="active">Connexion</a></li>
-        <li><a href="">Inscription</a></li>
+        <li><a routerLink="/inscription" routerLinkActive="active">Inscription</a></li>
         <li><a routerLink="/index" routerLinkActive="active">Accueil</a></li>			
 	</ul>
 	<router-outlet></router-outlet>
